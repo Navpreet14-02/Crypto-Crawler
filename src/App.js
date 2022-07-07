@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Header from './Components/Header';
+import CoinPage from './Pages/CoinPage';
+import Homepage from './Pages/Homepage';
+// import sx from "mui-sx";
+import { Box } from '@mui/material';
+
+
+const Appstyle = {
+    backgroundColor:"#14161a",
+    color:"white",
+    minHeight:"100vh"
+}
 function App() {
+
+  // Normally we provide styles in css but when using material UI we can use useStyles
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Box sx={{...Appstyle}}>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/coins/:id' element={<CoinPage />} />
+        </Routes>
+      </Box>
+    </BrowserRouter>
   );
 }
 
