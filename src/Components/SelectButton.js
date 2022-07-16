@@ -2,7 +2,7 @@ import { styled } from '@mui/material';
 import React from 'react';
 
 const SelectButton = ({ children, selected, onClick }) => {
-    const ChartBtn = styled('span')({
+    const ChartBtn = styled('span')(({theme})=>({
         border: '1px solid gold',
         borderRadius: 5,
         padding: 10,
@@ -19,7 +19,10 @@ const SelectButton = ({ children, selected, onClick }) => {
         },
         width: '22%',
         marginBottom: 5,
-    })
+        [theme.breakpoints.down('440')]:{
+            width:'75%',
+        }
+    }));
     
     return (
         <ChartBtn

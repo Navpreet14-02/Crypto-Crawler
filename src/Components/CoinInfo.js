@@ -26,6 +26,18 @@ const GraphContainer = styled('div')(({ theme }) => ({
   },
 }))
 
+const BtnBox = styled('div')(({ theme }) => ({
+    display: 'flex',
+    marginTop: 10,
+    justifyContent: 'space-around',
+    width: '100%',
+    [theme.breakpoints.down('440')]:{
+      flexDirection:'column',
+      alignItems:'center',
+      justifyContent:'center'
+    }
+}))
+
 const CoinInfo = ({ coin }) => {
 
 
@@ -97,27 +109,20 @@ const CoinInfo = ({ coin }) => {
                   },
                 }}
               />
+              <BtnBox>
+                {chartDays.map((day) => (
+                  <SelectButton
+                    key={day.value}
+                    onClick={() => setDays(day.value)}
+                    selected={day.value === days}
+                  >
+                    {day.label}
+                  </SelectButton>
+                ))}
+              </BtnBox>
             </>
           )
         }
-        <Box
-          style={{
-            display: 'flex',
-            marginTop: 10,
-            justifyContent: 'space-around',
-            width: '100%',
-          }}
-        >
-          {chartDays.map((day) => (
-            <SelectButton
-              key={day.value}
-              onClick={() => setDays(day.value)}
-              selected={day.value === days}
-            >
-              {day.label}
-            </SelectButton>
-          ))}
-        </Box>
       </GraphContainer>
     </ThemeProvider>
   )

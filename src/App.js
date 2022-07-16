@@ -6,6 +6,7 @@ import CoinPage from './Pages/CoinPage';
 import Homepage from './Pages/Homepage';
 // import sx from "mui-sx";
 import { Box } from '@mui/material';
+import Alert from './Components/Alert';
 
 
 const Appstyle = {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/coins/:id' element={<CoinPage />} />
         </Routes>
       </Box>
+      <Alert/>
     </BrowserRouter>
   );
 }
